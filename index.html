@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RGUHS Result</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+}
+.container{
+    width:350px;
+    margin:100px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 10px #ccc;
+}
+h2{text-align:center;}
+input,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+}
+button{
+    background:#007bff;
+    color:#fff;
+    border:none;
+}
+.captcha{
+    background:#eee;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h2>Check Result</h2>
+
+<input type="text" placeholder="Enter Registration Number">
+
+<div class="captcha" id="cap"></div>
+
+<input type="text" id="capin" placeholder="Enter Captcha">
+
+<button onclick="openPDF()">Submit</button>
+</div>
+
+<script>
+let c;
+function gen(){
+    c=Math.floor(1000+Math.random()*9000);
+    document.getElementById("cap").innerText=c;
+}
+gen();
+
+function openPDF(){
+    let u=document.getElementById("capin").value;
+    if(u==c){
+        window.open("EMS_Result.pdf","_blank");
+    }else{
+        alert("Wrong Captcha");
+        gen();
+    }
+}
+</script>
+</body>
+</html>
